@@ -4,10 +4,12 @@
       <b>Game Id:</b> {{ id }}
     </div>
     <ul class="game-content">
-      <li> host: {{ hostTeam }}</li>
-      <li> guest: {{ guestTeam }}</li>
-      <li> date: {{ date }}</li>
+      <li> home team: {{ homeTeam }}</li>
+      <li> away team: {{ awayTeam }}</li>
+      <!-- we did date time so we should connect them together -->
+      <li> date: {{ date }}</li> 
       <li> time: {{ hour }}</li>
+      <li> stadium: {{ stadium }}</li>
     </ul>
   </div>
 </template>
@@ -20,11 +22,11 @@ export default {
         type: Number,
         required: true
       },
-      hostTeam: {
+      homeTeam: {
         type: String,
         required: true
       },
-      guestTeam: {
+      awayTeam: {
         type: String,
         required: true
       },
@@ -35,7 +37,16 @@ export default {
       hour: {
         type: String,
         required: true
+      },
+      stadium: {
+        type: String,
+        required: true
+      },
+      result: {
+        type: String,
+        required: false
       }
+
   }, 
   mounted(){
     console.log("game preview mounted")

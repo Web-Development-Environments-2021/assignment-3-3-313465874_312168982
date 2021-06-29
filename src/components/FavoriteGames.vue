@@ -3,10 +3,11 @@
     <GamePreview
       v-for="g in games"
       :id="g.id" 
-      :hostTeam="g.hostTeam" 
-      :guestTeam="g.guestTeam" 
+      :homeTeam="g.homeTeam" 
+      :awayTeam="g.awayTeam" 
       :date="g.date" 
       :hour="g.hour" 
+      :stadium="g.stadium" 
       :key="g.id"></GamePreview>
   </div>
 </template>
@@ -23,17 +24,19 @@ export default {
       games: [
         {
           id:25,
-          hostTeam: "Maccabi Tel-Aviv",
-          guestTeam: "Hapoel Beer-Sheva",
+          homeTeam: "Maccabi Tel-Aviv",
+          awayTeam: "Hapoel Beer-Sheva",
           date: "27/5/21",
-          hour: "20:00"
+          hour: "20:00",
+          stadium: "CAMP NOU"
         },
         {
           id:39,
           hostTeam: "Hapoel Tel-Aviv",
           guestTeam: "Maccabi Haifa",
           date: "29/5/21",
-          hour: "20:00"
+          hour: "20:00",
+          stadium: "BAM"
         }
       ]
     };
