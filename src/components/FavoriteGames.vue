@@ -5,8 +5,7 @@
       :id="g.id" 
       :homeTeam="g.homeTeam" 
       :awayTeam="g.awayTeam" 
-      :date="g.date" 
-      :hour="g.hour" 
+      :dateTime="g.dateTime"  
       :stadium="g.stadium" 
       :key="g.id"></GamePreview>
   </div>

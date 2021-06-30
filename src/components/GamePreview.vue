@@ -6,9 +6,7 @@
     <ul class="game-content">
       <li> home team: {{ homeTeam }}</li>
       <li> away team: {{ awayTeam }}</li>
-      <!-- we did date time so we should connect them together -->
-      <li> date: {{ date }}</li> 
-      <li> time: {{ hour }}</li>
+      <li> date time: {{ dateTime }}</li> 
       <li> stadium: {{ stadium }}</li>
     </ul>
   </div>
@@ -30,11 +28,7 @@ export default {
         type: String,
         required: true
       },
-      date: {
-        type: String,
-        required: true
-      },
-      hour: {
+      dateTime: {
         type: String,
         required: true
       },

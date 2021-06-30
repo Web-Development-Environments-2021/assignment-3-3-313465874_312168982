@@ -21,7 +21,7 @@
           Username length should be between 3-8 characters long
         </b-form-invalid-feedback>
         <b-form-invalid-feedback v-if="!$v.form.username.alpha">
-          Username alpha
+          Username should contain only alphabet characters.
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -142,6 +142,7 @@ export default {
         password: "",
         confirmedPassword: "",
         email: "",
+        profilPic: "",
         submitError: undefined
       },
       countries: [{ value: null, text: "", disabled: true }],
@@ -212,7 +213,8 @@ export default {
         country: null,
         password: "",
         confirmedPassword: "",
-        email: ""
+        email: "",
+        profilPic: ""
       };
       this.$nextTick(() => {
         this.$v.$reset();
