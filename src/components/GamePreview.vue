@@ -71,7 +71,4 @@ export default {
   width: 100%;
   overflow: hidden;
 }
-
-
-
 </style>

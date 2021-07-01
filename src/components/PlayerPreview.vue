@@ -1,5 +1,16 @@
 <template>
-  <div class="player-preview">
+  <div>
+    <router-link 
+      :to="{
+      name: 'playerPreview',
+      params: { playerID: id},
+      }">
+    <div>
+      <img :src="ProfilePic"/>
+    </div>
+
+    </router-link>
+    <div class="player-preview">
     <div :title="id" class="player-title">
       <b>Player Id:</b> {{ id }}
     </div>
@@ -10,11 +21,12 @@
       <li> position number: {{ positionNumber }}</li>
     </ul>
   </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "PPlayerPreview",
+  name: "PlayerPreview",
   props: {
       id: {
         type: Number,

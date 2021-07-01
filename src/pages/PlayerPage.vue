@@ -1,65 +1,48 @@
 <template>
   <div>
-    <PlayerPreview>
-      <!-- v-for="p in players"
-      :id="p.id" 
-      :fullName="p.fullName" 
-      :teamName="p.teamName" 
-      :ProfilePic="p.ProfilePic"  
-      :positionNumber="p.positionNumber" 
-      :key="p.id"> -->
-      </PlayerPreview>
+    <ul class="player-ghy">
+      <li> full name: {{ name }}</li>
+      <li> commom name: {{ common_name }}</li>
+      <li> birth date: {{ birthDate }}</li> 
+      <li> country birth: {{ countryBirth }}</li>
+      <li> weight: {{ weight }}</li>
+      <li> height: {{ height }}</li>
+      <li> image: {{ image }}</li>
+      <li> nation: {{ nation }}</li>
+      <li> nation: {{ position }}</li>
+      <li> team name: {{ team_name }}</li>
+    </ul>
   </div>
 </template>
 
 <script>
-import PlayerPreview from "./PlayerPreview.vue";
 export default {
   name: "PlayerPage",
-  components: {
-    PlayerPreview
-  }, 
   data() {
     return {
-      players: [
-        {
-          id:25,
-          fullName: "Player1",
-          teamName: "fgfc",
-          ProfilePic: "link",
-          positionNumber: 3
-        },
-        {
-          id:25,
-          fullName: "Player2",
-          teamName: "fgfc",
-          ProfilePic: "link",
-          positionNumber: 3
-        }
-      ]
+      player: null    
     };
   },
-  // methods: {
-  //   async updateGames(){
-  //     console.log("response");
-  //     try {
-  //       const response = await this.axios.get(
-  //         "http://localhost:3000/games/favoriteGames",
-  //       );
-  //       const games = response.data.games;
-  //       this.games = [];
-  //       this.games.push(...games);
-  //       console.log(response);
-  //     } catch (error) {
-  //       console.log("error in update games")
-  //       console.log(error);
-  //     }
-  //   }
-  // }, 
-  // mounted(){
-  //   console.log("favorite games mounted");
-  //   this.updateGames(); 
-  // }
+  methods: {
+    async getPlayer(){
+      let response;
+      console.log("response");
+      try {
+        response = await this.axios.get(
+          "http://localhost:3000/teams/playersFullDetails/"+this.$route.params.playerID,
+        );
+        console.log(response);
+      } catch (error) {
+        console.log("error in update games")
+        console.log(error);
+      }
+      this.player = response;
+    }
+  }, 
+  mounted(){
+    console.log("favorite games mounted");
+    this.getPlayer(); 
+  }
 };
 </script>
 
