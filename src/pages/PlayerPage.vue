@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="player-ghy">
+    <ul class="playerClass">
       <li> full name: {{ name }}</li>
       <li> commom name: {{ common_name }}</li>
       <li> birth date: {{ birthDate }}</li> 

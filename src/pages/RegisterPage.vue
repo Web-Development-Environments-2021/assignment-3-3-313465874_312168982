@@ -26,6 +26,47 @@
       </b-form-group>
 
       <b-form-group
+        id="input-group-firstName"
+        label-cols-sm="3"
+        label="First Name:"
+        label-for="firstName"
+      >
+        <b-form-input
+          id="firstName"
+          v-model="$v.form.firstName.$model"
+          type="text"
+          :state="validateState('firstName')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.firstName.required">
+          first name is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.firstName.alpha">
+          first name should contain only alphabet characters.
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+        <b-form-group
+        id="input-group-lastName"
+        label-cols-sm="3"
+        label="Last Name:"
+        label-for="lastName"
+        >
+        <b-form-input
+          id="lastName"
+          v-model="$v.form.lastName.$model"
+          type="text"
+          :state="validateState('lastName')"
+        >
+        </b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.lastName.required">
+          last name is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">
+          last name should contain only alphabet characters.
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+      <b-form-group
         id="input-group-country"
         label-cols-sm="3"
         label="Country:"
@@ -89,6 +130,43 @@
           The confirmed password is not equal to the original password
         </b-form-invalid-feedback>
       </b-form-group>
+
+      
+      <b-form-group
+        id="input-group-email"
+        label-cols-sm="3"
+        label="Email:"
+        label-for="email"
+      >
+        <b-form-input
+          id="email"
+          v-model="$v.form.email.$model"
+          type="email"
+          :state="validateState('email')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.email.required">
+          email name is required
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+      
+      <b-form-group
+        id="input-group-profilPic"
+        label-cols-sm="3"
+        label="Profile Picture:"
+        label-for="profilPic"
+      >
+        <b-form-input
+          id="profilPic"
+          v-model="$v.form.profilPic.$model"
+          type="url"
+          :state="validateState('profilPic')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.profilPic.required">
+          profilPic is required
+        </b-form-invalid-feedback>
+      </b-form-group>
+
 
       <b-button type="reset" variant="danger">Reset</b-button>
       <b-button
@@ -157,6 +235,14 @@ export default {
         length: (u) => minLength(3)(u) && maxLength(8)(u),
         alpha
       },
+      firstName: {
+        required,
+        alpha
+      },
+      lastName: {
+        required,
+        alpha
+      },
       country: {
         required
       },
@@ -167,6 +253,13 @@ export default {
       confirmedPassword: {
         required,
         sameAsPassword: sameAs("password")
+      },
+      email: {
+        required,
+        email
+      },
+      profilPic: {
+        required
       }
     }
   },
@@ -191,7 +284,7 @@ export default {
             country: this.form.country,
             password: this.form.password,
             email: this.form.email,
-            profilPic: this.form.profilPic
+            imageUrl: this.form.profilPic
           }
         );
         this.$router.push("/login");

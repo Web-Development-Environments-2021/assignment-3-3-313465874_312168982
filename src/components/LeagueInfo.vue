@@ -11,6 +11,8 @@
         Season: {{ season }}
         <br/>
         Stage: {{ stage }}
+        <br/>
+        Next Game: {{ nextGame }}
       </b-card-text>
       <b-button href="#" variant="primary">Go somewhere</b-button>
     </b-card>
@@ -21,11 +23,42 @@
 export default {
  data() {
     return {
-      leagueName: "superliga", 
-      season: "season", 
-      stage: "stage"
+      leagueName: "superliga1", 
+      season: "season1", 
+      stage: "stage1",
+      nextGame: 'h',
+      // top3games: []
     };
   },
+  methods: {
+    async getLeagueDetails(){
+      console.log("response");
+      try {
+        const response = await this.axios.get(
+          "http://localhost:3000/league/getDetails",
+        );
+        const leagueName = response.league_name;
+        const reseason = response.current_season_name;
+        const restage = response.current_stage_name;
+        const nextGame = response.nextGame;
+        // const top3games = response.top3games;
+        this.leagueName = leagueName;
+        // this.top3games = [];
+        // this.top3games.push(...top3games);
+        this.season = reseason;
+        this.stage = restage;
+        this.nextGame = nextGame;
+        console.log(response);
+      } catch (error) {
+        console.log("error in get league details")
+        console.log(error);
+      }
+    }
+  }, 
+  mounted(){
+    // console.log("favorite games mounted");
+    this.getLeagueDetails(); 
+  }
 }
 </script>
 
