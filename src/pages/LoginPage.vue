@@ -119,7 +119,7 @@ export default {
       }
       // console.log("login method go");
 
-      this.Login();
+      this.Login(this.form.username); // this.login() //Lev changed and now it should work
     }
   }
 };
