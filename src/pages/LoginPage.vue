@@ -104,7 +104,9 @@ export default {
         // this.$root.loggedIn = true;
         console.log(this.$root.store.login);
         this.$root.store.login(this.form.username);
+        // if(this.$route.path != "/"){
         this.$router.push("/");
+        // }
       } catch (err) {
         console.log(err.response);
         this.form.submitError = err.response.data.message;
@@ -117,9 +119,9 @@ export default {
       if (this.$v.form.$anyError) {
         return;
       }
-      // console.log("login method go");
+      console.log("login method go");
 
-      this.Login(this.form.username); // this.login() //Lev changed and now it should work
+      this.Login();
     }
   }
 };

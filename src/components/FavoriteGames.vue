@@ -1,13 +1,15 @@
 <template>
   <div>
+    <div v-for="g in games" :key="g.id">
     <GamePreview
-      v-for="g in games"
       :id="g.game_id" 
       :homeTeam="g.homeTeam" 
       :awayTeam="g.awayTeam" 
       :dateTime="g.date_time"  
       :stadium="g.stadium" 
-      :key="g.id"></GamePreview>
+      :key="g.id"/>
+      <!-- GamePreview> -->
+      </div>
   </div>
 </template>
 
@@ -42,18 +44,21 @@ export default {
   },
   methods: {
     async updateGames(){
-      console.log("response");
-      try {
-        const response = await this.axios.get(
+      // this.$root.store.hasCookie();
+      this.$forceUpdate();
+      if(this.$root.store.username){
+        console.log("response");
+        try {
+          const response = await this.axios.get(
           "http://localhost:3000/users/getFavoriteGames",
         );
-        const games = response.data.games; //check if delete data
-        this.games = [];
+        this.games = response.data.top3games;
         this.games.push(...games);
         console.log(response);
-      } catch (error) {
+        } catch (error) {
         console.log("error in update games")
         console.log(error);
+        }
       }
     }
   }, 

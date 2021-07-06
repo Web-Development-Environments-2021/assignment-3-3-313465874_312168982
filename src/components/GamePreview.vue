@@ -1,7 +1,10 @@
 <template>
   <div class="game-preview">
     <div :title="id" class="game-title">
-      <b>Game Id:</b> {{ id }}
+      <MatchReport v-if="result!=null"
+        :items = "mr"/>
+      <!-- </MatchReport> -->
+      <!-- <b>Game Id:</b> {{ id }}  -->
     </div>
     <ul class="game-content">
       <li> home team: {{ homeTeam }}</li>
@@ -13,8 +16,17 @@
 </template>
 
 <script>
+import MatchReport from "./MatchReport.vue";
 export default {
   name: "GamePreview",
+  components: {
+    MatchReport
+  }, 
+  data() {
+    return {
+      mr: []
+    }
+  },
   props: {
       id: {
         type: Number,

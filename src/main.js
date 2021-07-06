@@ -69,7 +69,7 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 const shared_data = {
-  // username: localStorage.username,
+  username: localStorage.username,
   // username: "hilla",
   login(username) {
     localStorage.setItem("username", username);
@@ -80,7 +80,17 @@ const shared_data = {
     console.log("logout");
     localStorage.removeItem("username");
     this.username = undefined;
-  }
+  },
+  // hasCookie(){
+  //   // console.log(Vue.$cookies.get("session"))
+  //   if(this.username!=undefined){
+  //     this.logout();
+  //     this.$router.push("/").catch(() => {
+  //       this.$forceUpdate();
+  //     });
+  //   }
+  // }
+
 };
 console.log(shared_data);
 // Vue.prototype.$root.store = shared_data;
