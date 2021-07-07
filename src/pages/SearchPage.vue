@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id = "searchContainer">
     <h1 class="title">Search Page</h1>
     <b-input-group prepend="Search Query:" id="search-input">
       <b-form-input v-model="searchQuery"></b-form-input>
@@ -44,8 +44,13 @@ export default {
 
 <style scoped>
 
+#searchContainer{
+  text-align: left;
+  margin-left: 70px;
+  margin-top: 30px;
+}
+
 #search-input {
-  margin-left: 20px; 
   width: 500px; 
 }
 </style>

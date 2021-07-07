@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div id = "container">
     <div v-for="g in games" :key="g.id">
     <GamePreview
       :id="g.game_id" 
-      :homeTeam="g.homeTeam" 
-      :awayTeam="g.awayTeam" 
-      :dateTime="g.date_time"  
-      :stadium="g.stadium" 
-      :key="g.id"/>
+      :homeTeam="g[0].home_team" 
+      :awayTeam="g[0].away_team" 
+      :dateTime="g[0].date_time"  
+      :stadium="g[0].stadium" 
+      :key="g[0].game_id"/>
       <!-- GamePreview> -->
       </div>
   </div>
@@ -22,7 +22,7 @@ export default {
   }, 
   data() {
     return {
-      games: [
+      games: [] //[
         // {
         //   id:25,
         //   homeTeam: "Maccabi Tel-Aviv",
@@ -39,7 +39,7 @@ export default {
         //   hour: "20:00",
         //   stadium: "BAM"
         // }
-      ]
+      // ]
     };
   },
   methods: {
@@ -52,8 +52,7 @@ export default {
           const response = await this.axios.get(
           "http://localhost:3000/users/getFavoriteGames",
         );
-        this.games = response.data.top3games;
-        this.games.push(...games);
+        this.games = response.data;
         console.log(response);
         } catch (error) {
         console.log("error in update games")
@@ -69,4 +68,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

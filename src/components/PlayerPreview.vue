@@ -17,7 +17,9 @@
     <ul class="player-content">
       <li> full name: {{ fullName }}</li>
       <li> team name: {{ teamName }}</li>
-      <li> profile picture: {{ ProfilePic }}</li> 
+      <li> profile picture: 
+        <!-- <img src= this.ProfilePic class = "logoP" alt="logoP" height="55"> -->
+      </li> 
       <li> position number: {{ positionNumber }}</li>
     </ul>
   </div>
@@ -45,7 +47,7 @@ export default {
         required: true
       },
       positionNumber: {
-        type: Integer,
+        type: Number,
         required: true
       }
 

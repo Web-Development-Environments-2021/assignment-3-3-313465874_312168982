@@ -1,9 +1,10 @@
 <template>
   <div class="container">
-    <h1 class="title">Main Page</h1>
+    <h1 class="title">Welcome to Superliga App!</h1>
     <!-- <LoginPage v-if="!$root.store.username"></LoginPage> -->
-    <FavoriteGames id="favorite" v-if="$root.store.username"></FavoriteGames>
-    <LeagueInfo></LeagueInfo>
+    <!-- Noya - To return When you check -->
+    <!-- <FavoriteGames id="favorite" v-if="$root.store.username"></FavoriteGames>
+    <LeagueInfo></LeagueInfo> -->
   </div>
 </template>
 
@@ -12,11 +13,11 @@ import LeagueInfo from "../components/LeagueInfo";
 import FavoriteGames from "../components/FavoriteGames";
 // import LoginPage from "../pages/LoginPage";
 export default {
-  components: {
-    LeagueInfo, 
-    // LoginPage, 
-    FavoriteGames
-  }
+  // components: {
+  //   // LoginPage, 
+  //   LeagueInfo, 
+  //   FavoriteGames
+  // }
 };
 </script>
 

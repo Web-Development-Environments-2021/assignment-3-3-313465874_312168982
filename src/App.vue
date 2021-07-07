@@ -6,6 +6,10 @@
         <b-navbar-nav>
 
         <b-nav-item :to="{ name: 'search' }">Search</b-nav-item>
+        <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
+        <b-nav-item :to="{ name: 'currentGames' }">Current Stage Games</b-nav-item>
+        <b-nav-item :to="{ name: 'playerPage' }">Player page</b-nav-item>
+        <b-nav-item :to="{ name: 'teamPage' }">Team page</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto" v-if="!$root.store.username">
           <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
@@ -16,7 +20,7 @@
           <template #button-content>
             {{ $root.store.username }}
           </template>
-          <b-dropdown-item href="#">Favorites</b-dropdown-item>
+          <b-dropdown-item :to="{ name: 'favoriteGamesPage' }">Favorites</b-dropdown-item>
           <b-dropdown-item href="#" @click="Logout" >Log Out</b-dropdown-item>
         </b-nav-item-dropdown>
         </b-navbar-nav>
@@ -52,7 +56,7 @@ export default {
   // font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #50422c;
   min-height: 100vh;
 }
 

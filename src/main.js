@@ -63,14 +63,16 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
+axios.defaults.withCredentials=true; // Set Cookies
 Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false;
 
 const shared_data = {
-  username: localStorage.username,
+  // username: localStorage.username,
   // username: "hilla",
+  player_id: 172104,
+  teamID: 53,
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;

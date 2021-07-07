@@ -63,7 +63,9 @@ export default {
   display: inline-block;
   width: 1000px;
   height: 300px;
-  position: relative;
+  box-sizing: border-box;
+  /* position: relative; */
+  float: right;
   margin: 10px 10px;
   /* border-style: solid; */
   /* border-radius: 10px; */

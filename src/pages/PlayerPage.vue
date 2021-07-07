@@ -1,16 +1,18 @@
 <template>
   <div>
     <ul class="playerClass">
-      <li> full name: {{ name }}</li>
-      <li> commom name: {{ common_name }}</li>
-      <li> birth date: {{ birthDate }}</li> 
+      <li> full name: {{ player.name }}</li>
+      <li> commom name: {{ player.common_name }}</li>
+      <li> birth date: {{ player.birthDate }}</li> 
       <li> country birth: {{ countryBirth }}</li>
-      <li> weight: {{ weight }}</li>
-      <li> height: {{ height }}</li>
-      <li> image: {{ image }}</li>
-      <li> nation: {{ nation }}</li>
-      <li> nation: {{ position }}</li>
-      <li> team name: {{ team_name }}</li>
+      <li> weight: {{ player.weight }}</li>
+      <li> height: {{ player.height }}</li>
+      <li> image: 
+        <!-- <img src= this.player.image class = "logoP" alt="logoP" height="55"> -->
+      </li>
+      <li> nation: {{ player.nation }}</li>
+      <li> position: {{ player.position }}</li>
+      <li> team name: {{ player.team_name }}</li>
     </ul>
   </div>
 </template>
@@ -29,14 +31,14 @@ export default {
       console.log("response");
       try {
         response = await this.axios.get(
-          "http://localhost:3000/teams/playersFullDetails/"+this.$route.params.playerID,
+          "http://localhost:3000/teams/playersFullDetails/" + this.$root.store.player_id,
         );
         console.log(response);
       } catch (error) {
         console.log("error in update games")
         console.log(error);
       }
-      this.player = response;
+      this.player = response.data.data[0];
     }
   }, 
   mounted(){

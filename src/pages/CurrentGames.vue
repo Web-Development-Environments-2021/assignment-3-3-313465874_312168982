@@ -1,19 +1,21 @@
 <template>
   <div>
-    <div v-for="g in games" :key="g.id">
+    <h1 class="title">The Games Of The Current Stage:</h1>
+    <h2 v-for="g in games" :key="g.id">
+    <br/>
     <GamePreview
       :id="g.game_id" 
       :homeTeam="g.homeTeam" 
       :awayTeam="g.awayTeam" 
       :dateTime="g.date_time"  
       :stadium="g.stadium" 
-      :key="g.id"/>
-      </div>
+      :key="g.id"></GamePreview>
+      </h2>
   </div>
 </template>
 
 <script>
-import GamePreview from "./GamePreview.vue";
+import GamePreview from "../components/GamePreview.vue";
 export default {
   name: "CurrentGames",
   components: {
@@ -53,4 +55,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.title{
+  text-align: center;
+  margin-top: 50px;
+}
+</style>
