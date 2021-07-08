@@ -11,16 +11,40 @@
       <!-- Your search Query: {{ searchQuery }} -->
       Results:
       <br/>
-      {{this.results}}
+      Players:
+      <br/>
+      <PlayerPreview
+      v-for="p in playersData" 
+      :ProfilePic="p[0].image" 
+      :fullName="p[0].name" 
+      :positionNumber="p[0].position"
+      :teamName="p[0].team_name"
+      :id=1
+      :key="p[0].name"></PlayerPreview>
+      <br/>
+      Teams:
+      <br/>
+      <!-- <TeamPreview
+      v-for="t in teamData" 
+      :ProfilePic="t[0].image" 
+      :fullName="t[0].name" 
+      :positionNumber="t[0].position"
+      :teamName="p[0].team_name"
+      :id=1
+      :key="t[0].name"></TeamPreview> -->
   </div>
 </template>
 
 <script>
+import PlayerPreview from '../components/PlayerPreview.vue';
 export default {
+  components: { PlayerPreview },
  data() {
     return {
       searchQuery:"",
-      results:[]
+      results:[],
+      playersData: null,
+      teamData: null
     };
   },
 
@@ -31,6 +55,18 @@ export default {
         "http://localhost:3000/league/search?query="+this.searchQuery,
         );
         console.log(response);
+        this.playersData = response.data.data
+        if(this.playersData.length === 1){
+          let templateVar = [];
+          templateVar.push(this.playersData);
+          this.playersData = templateVar; 
+        }
+        this.teamData = response.data.teamSearch
+        if(this.teamData.length === 1){
+          let templateVar = [];
+          templateVar.push(this.teamData);
+          this.teamData = templateVar; 
+        }
       } catch (error) {
         console.log("error in update games")
         console.log(error);

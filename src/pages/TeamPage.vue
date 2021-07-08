@@ -1,13 +1,13 @@
 <template>
   <div>
     <PlayerPreview
-      v-for="p in players"
-      :id="p.name" 
-      :image="p.image" 
-      :name="p.name" 
-      :position="p.position"
-      :team_name="p.team_name"
-      :key="p.id"></PlayerPreview>
+      v-for="p in playersData" 
+      :ProfilePic="p.image" 
+      :fullName="p.name" 
+      :positionNumber="p.position"
+      :teamName="p.team_name"
+      :id=1
+      :key="p.name"></PlayerPreview>
 
     <GamePreview
       v-for="g in future_games"
