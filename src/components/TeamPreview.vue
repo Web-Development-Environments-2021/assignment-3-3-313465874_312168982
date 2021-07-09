@@ -3,10 +3,10 @@
     <router-link 
       :to="{
       name: 'TeamPreview',
-      params: { TeamID: id},
+      params: { teamID: id},
       }">
     <div>
-      <img :src="logo"/>
+      <img :src="logo" @click="moveTeamPage"  :to="{ name: 'teamPage' }"/>
     </div>
 
     </router-link>
@@ -15,7 +15,7 @@
       <b>Team Id:</b> {{ id }}
     </div>
     <ul class="team-content">
-      <li> team name: {{ teamName }}</li>
+      <li> team name: {{ name }}</li>
     </ul>
   </div>
   </div>
@@ -29,7 +29,7 @@ export default {
         type: Number,
         required: true
       },
-      teamName: {
+      name: {
         type: String,
         required: true
       },
@@ -39,8 +39,14 @@ export default {
       }
 
   }, 
+  methods:{
+    moveTeamPage(){
+      this.$root.store.changeTeamID(this.id);
+    }
+    
+  },
   mounted(){
-    console.log("team preview mounted")
+    console.log("game preview mounted")
   } 
 };
 </script>
@@ -58,13 +64,13 @@ export default {
   border-color:cadetblue;
 }
 
-.player-preview .player-title {
+.team-preview .team-title {
   text-align: center;
   text-transform: uppercase;
   color:  rgb(111, 197, 157);
 }
 
-.player-preview .player-content {
+.team-preview .team-content {
   width: 100%;
   overflow: hidden;
 }

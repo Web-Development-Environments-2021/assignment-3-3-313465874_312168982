@@ -61,7 +61,7 @@ export default {
       console.log("response");
       try {
         response = await this.axios.get(
-          "http://localhost:3000/teams/teamFullDetails/53",//+this.$route.store.teamID,
+          "http://localhost:3000/teams/teamFullDetails/86",
         );
         console.log(response);
       } catch (error) {

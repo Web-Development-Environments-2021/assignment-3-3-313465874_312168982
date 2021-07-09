@@ -11,6 +11,8 @@ const router = new VueRouter({
 });
 
 import Vuelidate from "vuelidate";
+import { BTable } from 'bootstrap-vue'
+Vue.component('b-table', BTable)
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import {
@@ -83,6 +85,9 @@ const shared_data = {
     localStorage.removeItem("username");
     this.username = undefined;
   },
+  changeTeamID(newTeamID){
+    this.teamID = newTeamID
+  }
   // hasCookie(){
   //   // console.log(Vue.$cookies.get("session"))
   //   if(this.username!=undefined){

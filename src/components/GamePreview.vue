@@ -1,9 +1,10 @@
 <template>
   <div class="game-preview">
     <div :title="id" class="game-title">
-      <MatchReport v-if="result!=null"
-        :items = "mr"/>
-      <!-- </MatchReport> -->
+      <b v-if="result">
+        <MatchReport :items = "mr">
+        </MatchReport>
+      </b>
       <!-- <b>Game Id:</b> {{ id }}  -->
     </div>
     <ul class="game-content">
@@ -11,6 +12,7 @@
       <li> away team: {{ awayTeam }}</li>
       <li> date time: {{ dateTime }}</li> 
       <li> stadium: {{ stadium }}</li>
+      <li v-if="result"> result: {{result}} </li>
     </ul>
   </div>
 </template>
@@ -22,11 +24,11 @@ export default {
   components: {
     MatchReport
   }, 
-  data() {
-    return {
-      mr: []
-    }
-  },
+  // data() {
+  //   return {
+  //   //   mr: null
+  //   }
+  // },
   props: {
       id: {
         type: Number,
@@ -51,6 +53,10 @@ export default {
       result: {
         type: String,
         required: false
+      },
+      mr: {
+        type: Array,
+        required: false
       }
 
   }, 
@@ -63,8 +69,8 @@ export default {
 <style>
 .game-preview {
   display: inline-block;
-  width: 250px;
-  height: 200px;
+  width: 100%;
+  height:100%;
   position: relative;
   margin: 10px 10px;
   border-style: solid;

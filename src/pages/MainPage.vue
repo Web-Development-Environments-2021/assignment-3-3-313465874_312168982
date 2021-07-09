@@ -12,13 +12,13 @@
 import LeagueInfo from "../components/LeagueInfo";
 import FavoriteGames from "../components/FavoriteGames";
 // import LoginPage from "../pages/LoginPage";
-// export default {
+export default {
 //   components: {
 //     // LoginPage, 
 //     LeagueInfo, 
 //     FavoriteGames
 //   }
-// };
+};
 </script>
 
 <style lang="scss" scoped>

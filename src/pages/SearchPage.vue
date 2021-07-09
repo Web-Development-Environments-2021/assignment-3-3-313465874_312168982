@@ -15,27 +15,29 @@
       <br/>
       <PlayerPreview 
       v-for="p in playersData" 
-      :ProfilePic="p[0].image" 
-      :fullName="p[0].name" 
-      :positionNumber="p[0].position"
-      :teamName="p[0].team_name"
-      :id=1
-      :key="p[0].name"></PlayerPreview>
+      :ProfilePic="p.image" 
+      :fullName="p.name" 
+      :positionNumber="p.position"
+      :teamName="p.team_name"
+      :id="p.player_id"
+      :key="p.name"></PlayerPreview>
       <br/>
       <!-- Teams: -->
       <br/>
       <TeamPreview
       v-for="t in teamData" 
-      :teamName="t[0].name" 
-      :id=1
-      :key="t[0].name"></TeamPreview>
+      :name="t.name" 
+      :id="t.id"
+      :logo="t.logo"
+      :key="t.id"></TeamPreview>
   </div>
 </template>
 
 <script>
 import PlayerPreview from '../components/PlayerPreview.vue';
+import TeamPreview from '../components/TeamPreview.vue';
 export default {
-  components: { PlayerPreview },
+  components: { PlayerPreview,TeamPreview },
  data() {
     return {
       searchQuery:"",
@@ -54,17 +56,10 @@ export default {
         );
         console.log(response);
         this.playersData = response.data.data
-        if(this.playersData.length === 1){
-          let templateVar = [];
-          templateVar.push(this.playersData);
-          this.playersData = templateVar; 
-        }
-        this.teamData = response.data.teamSearch
-        if(this.teamData.length === 1){
-          let templateVar = [];
-          templateVar.push(this.teamData);
-          this.teamData = templateVar; 
-        }
+
+        this.teamData = response.data.teamsSearch
+        console.log(this.$root.store)
+        
       } catch (error) {
         console.log("error in update games")
         console.log(error);

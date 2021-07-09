@@ -1,7 +1,7 @@
 <template>
   <div class="match-report">
      <div>
-        <b-table striped hover :items="items"></b-table>
+        <b-table hover :items="items"></b-table>
     </div> 
     <!-- <ul class="mt-content"> -->
       <!-- <li> date: {{ homeTeam }}</li>
@@ -25,5 +25,7 @@ export default {
 </script>
 
 <style>
-
+  .match-report{
+    height: 100%;
+  }
 </style>
