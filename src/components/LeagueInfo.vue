@@ -5,7 +5,7 @@
       tag="article"
       style="max-width: 20rem;"
       class="mb-2"
-    >
+      >
       <b-card-title>{{ leagueName }}</b-card-title>
       <b-card-text>
         Season: {{ season }}
@@ -15,7 +15,7 @@
         Next Game: {{ nextGame[0]['home_team'] }} VS
          {{ nextGame[0]['away_team']}}
       </b-card-text>
-      <!-- <b-card-text id="top3games">The next 3 favorite games: {{ top3games }}</b-card-text> -->
+      <b-card-text id="top3games">The next 3 favorite games: {{ top3games }}</b-card-text>
       <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
     </b-card>
   </div>
@@ -65,7 +65,7 @@ export default {
   height: 300px;
   box-sizing: border-box;
   /* position: relative; */
-  float: right;
+  /* float: right; */
   margin: 10px 10px;
   /* border-style: solid; */
   /* border-radius: 10px; */
@@ -85,6 +85,6 @@ export default {
 }
 #top3games{
   align-content: right;
-  
+  right: 20px;
 }
 </style>

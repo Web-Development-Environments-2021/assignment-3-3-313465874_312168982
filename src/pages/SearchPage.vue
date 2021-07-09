@@ -9,11 +9,11 @@
     </b-input-group>
       <br/>
       <!-- Your search Query: {{ searchQuery }} -->
-      Results:
+      <!-- Results: -->
       <br/>
-      Players:
+      <!-- Players: -->
       <br/>
-      <PlayerPreview
+      <PlayerPreview 
       v-for="p in playersData" 
       :ProfilePic="p[0].image" 
       :fullName="p[0].name" 
@@ -22,16 +22,13 @@
       :id=1
       :key="p[0].name"></PlayerPreview>
       <br/>
-      Teams:
+      <!-- Teams: -->
       <br/>
-      <!-- <TeamPreview
+      <TeamPreview
       v-for="t in teamData" 
-      :ProfilePic="t[0].image" 
-      :fullName="t[0].name" 
-      :positionNumber="t[0].position"
-      :teamName="p[0].team_name"
+      :teamName="t[0].name" 
       :id=1
-      :key="t[0].name"></TeamPreview> -->
+      :key="t[0].name"></TeamPreview>
   </div>
 </template>
 
@@ -44,7 +41,8 @@ export default {
       searchQuery:"",
       results:[],
       playersData: null,
-      teamData: null
+      teamData: null,
+      present: "all"
     };
   },
 
@@ -75,6 +73,15 @@ export default {
         // this.results = response.data;
     }
   }, 
+  // computed: {
+  //   filteredResults() {
+  //   let filterRes = this.results
+  //   filterRes = filterRes.filter((item) => {
+  //     return (item.id <= this.id)
+  //   })
+  //   return filterRes;
+  // }
+  // },
 }
 </script>
 

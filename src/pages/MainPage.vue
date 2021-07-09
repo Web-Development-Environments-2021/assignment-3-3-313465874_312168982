@@ -12,13 +12,13 @@
 import LeagueInfo from "../components/LeagueInfo";
 import FavoriteGames from "../components/FavoriteGames";
 // import LoginPage from "../pages/LoginPage";
-export default {
-  // components: {
-  //   // LoginPage, 
-  //   LeagueInfo, 
-  //   FavoriteGames
-  // }
-};
+// export default {
+//   components: {
+//     // LoginPage, 
+//     LeagueInfo, 
+//     FavoriteGames
+//   }
+// };
 </script>
 
 <style lang="scss" scoped>
@@ -35,5 +35,8 @@ export default {
 }
 .title{
   text-align: center;
+  // background-image: url('../assets/ball.jpg');
+  // background-repeat: 'no-repeat';
+  // background-size: 'cover'
 }
 </style>

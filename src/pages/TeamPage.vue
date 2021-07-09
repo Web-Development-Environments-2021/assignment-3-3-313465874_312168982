@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 class="title">Team Page</h1>
     <PlayerPreview
       v-for="p in playersData" 
       :ProfilePic="p.image" 
@@ -64,7 +65,7 @@ export default {
         );
         console.log(response);
       } catch (error) {
-        console.log("error in update games")
+        console.log("error in get team page")
         console.log(error);
       }
       this.players = response.data[0];
@@ -74,7 +75,7 @@ export default {
     }
   }, 
   mounted(){
-    console.log("favorite games mounted");
+    console.log("team page mounted");
     this.getPlayersand(); 
   }
 };
