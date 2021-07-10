@@ -1,42 +1,58 @@
 <template>
   <div class="container">
     <h1 class="title">Welcome to Superliga App!</h1>
-    <!-- <LoginPage v-if="!$root.store.username"></LoginPage> -->
-    <!-- Noya - To return When you check -->
-    <!-- <FavoriteGames id="favorite" v-if="$root.store.username"></FavoriteGames>
-    <LeagueInfo></LeagueInfo> -->
+      
+    <div class="items">
+      <div id="leaguePage">
+        <LeagueInfo></LeagueInfo>
+      </div>
+      <div id="rigthCol">
+        <!-- <div id="loginPage"> -->
+          <LoginPage v-if="!$root.store.username"></LoginPage>
+        <!-- </div> -->
+        <!-- <div id="favoritesPage"> -->
+          <FavoriteGames id="favorite" v-if="$root.store.username">
+          <!-- <div v-for="game in limit3Games" :key="game.id"></div> -->
+          </FavoriteGames>
+        <!-- </div>  -->
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import LeagueInfo from "../components/LeagueInfo";
 import FavoriteGames from "../components/FavoriteGames";
-// import LoginPage from "../pages/LoginPage";
+import LoginPage from "../pages/LoginPage";
 export default {
-//   components: {
-//     // LoginPage, 
-//     LeagueInfo, 
-//     FavoriteGames
-//   }
+  components: {
+    LoginPage, 
+    LeagueInfo, 
+    FavoriteGames
+  }
+  // computed: {
+  //   limit3Games(){
+  //     return this.FavoriteGames.slice(0,3);
+  //   }
+  // }
 };
+
 </script>
 
 <style lang="scss" scoped>
-.RandomRecipes {
-  margin: 10px 0 10px;
+
+.container {
+  display: flex;
+  flex-direction: column;
 }
-.blur {
-  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-  filter: blur(2px);
-}
-::v-deep .blur .recipe-preview {
-  pointer-events: none;
-  cursor: default;
+.items {
+  display: flex;
+  flex-direction: row;
 }
 .title{
   text-align: center;
-  // background-image: url('../assets/ball.jpg');
-  // background-repeat: 'no-repeat';
-  // background-size: 'cover'
+  margin: 20px;
+  font-size: 50px;
+  color: #2f941d;
 }
 </style>

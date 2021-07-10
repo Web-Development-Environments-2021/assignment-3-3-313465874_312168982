@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar toggleable="lg" type="dark" variant="dark" id="menu">
       <b-navbar-brand :to="{ name: 'main' }">Superliga Vue</b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
@@ -8,10 +8,11 @@
         <b-nav-item :to="{ name: 'search' }">Search</b-nav-item>
         <b-nav-item :to="{ name: 'about' }">About</b-nav-item>
         <b-nav-item :to="{ name: 'currentGames' }">Current Stage Games</b-nav-item>
-        <b-nav-item :to="{ name: 'playerPage' }">Player page</b-nav-item>
-        <b-nav-item :to="{ name: 'teamPage' }">Team page</b-nav-item>
+        <b-nav-item :to="{ name: 'LeagueManPage' }">League Management Page</b-nav-item>
+        <!-- <b-nav-item :to="{ name: 'teamPage' }">Team page</b-nav-item> -->
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto" v-if="!$root.store.username">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">hello guest</a>
           <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
           <b-nav-item :to="{ name: 'register' }">Register</b-nav-item>
         </b-navbar-nav>
@@ -56,21 +57,26 @@ export default {
   // font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #50422c;
   min-height: 100vh;
+  background-image: url('./assets/ball.jpg');
+  background-repeat: 'no-repeat';
+  background-position: center;
+  background-repeat:  no-repeat;
+  background-size:cover ;
+  background-attachment: fixed;
 }
 
 #nav {
   padding: 30px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+// #nav a {
+//   font-weight: bold;
+//   color: #ff0000;
+// }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+// #nav a.router-link-exact-active {
+//   color: #d100c0;
+// }
 
 </style>

@@ -1,19 +1,24 @@
 <template>
-  <div>
-    <ul class="playerClass">
-      <li> full name: {{ player.name }}</li>
-      <li> commom name: {{ player.common_name }}</li>
-      <li> birth date: {{ player.birthDate }}</li> 
-      <li> country birth: {{ countryBirth }}</li>
-      <li> weight: {{ player.weight }}</li>
-      <li> height: {{ player.height }}</li>
-      <li> image: 
-        <!-- <img src= this.player.image class = "logoP" alt="logoP" height="55"> -->
-      </li>
-      <li> nation: {{ player.nation }}</li>
-      <li> position: {{ player.position }}</li>
-      <li> team name: {{ player.team_name }}</li>
-    </ul>
+  <div class="playerPage">
+    <h1 class="title">Player Page</h1>
+    <div class="playerTicket">
+      <div>
+        <img :src="player.image" width="330px" height="330px"/>
+      </div>
+      <div>
+        <ul class="playerClass">
+          <li> full name: {{ player.name }}</li>
+          <li> commom name: {{ player.common_name }}</li>
+          <li> birth date: {{ player.birthDate }}</li> 
+          <li> country birth: {{ countryBirth }}</li>
+          <li> weight: {{ player.weight }}</li>
+          <li> height: {{ player.height }}</li>
+          <li> nation: {{ player.nation }}</li>
+          <li> position: {{ player.position }}</li>
+          <li> team name: {{ player.team_name }}</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -31,7 +36,8 @@ export default {
       console.log("response");
       try {
         response = await this.axios.get(
-          "http://localhost:3000/teams/playersFullDetails/" + this.$root.store.player_id,
+          "http://localhost:3000/teams/playersFullDetails/" + localStorage.player_id,
+          // + this.$root.store.player_id,
         );
         console.log(response);
       } catch (error) {
@@ -42,10 +48,32 @@ export default {
     }
   }, 
   mounted(){
-    console.log("favorite games mounted");
+    console.log("player page mounted");
     this.getPlayer(); 
   }
 };
 </script>
 
-<style></style>
+<style>
+.title{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 50px;
+  color: #2f941d;
+}
+.playerClass {
+  font-size: 25px;
+  font-weight: bold;
+  align-items: center;
+}
+.playerPage{
+  display: flex;
+  flex-direction: column;
+}
+.playerTicket{
+  margin-left: 200px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+}
+</style>

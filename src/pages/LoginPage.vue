@@ -39,11 +39,11 @@
       <b-button
         type="submit"
         variant="primary"
-        style="width:100px;display:block;"
+        style="width:400px;font-size:30px;"
         class="mx-auto w-100"
         >Login</b-button
       >
-      <div class="mt-2">
+      <div id="reg">
         Do not have an account yet?
         <router-link to="register"> Register in here</router-link>
       </div>
@@ -105,10 +105,18 @@ export default {
         console.log(this.$root.store.login);
         this.$root.store.login(this.form.username);
         // if(this.$route.path != "/"){
-        this.$router.push("/");
+          this.$router.push("/")
+        .catch(() => {
+        this.$forceUpdate();
+      })
+      // ;}
+      // else{
+      //   this.$forceUpdate();
+      // }
         // }
       } catch (err) {
         console.log(err.response);
+        this.$root.toast("Login", "username or password are incorrect", "failed");
         this.form.submitError = err.response.data.message;
       }
     },
@@ -128,6 +136,32 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  max-width: 400px;
+  max-width: 450px;
+  font-size: 23px;
+  color: #1173cf;
+  font-weight: bold;
 }
+.title {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 50px;
+  color: #1173cf;
+}
+
+#Username {
+  margin-left: 40px;
+  margin-top: 12px;
+}
+
+#Password {
+  margin-left: 40px;
+  margin-top: 12px;
+}
+
+#reg {
+  font-size: 20px;
+  color: rgb(39, 144, 214);
+}
+
+
 </style>

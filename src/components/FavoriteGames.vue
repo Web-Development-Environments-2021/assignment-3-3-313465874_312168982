@@ -3,6 +3,7 @@
     <div v-for="g in games" :key="g.id">
     <GamePreview
       :id="g.game_id" 
+      :referee_name="g[0].referee_name"
       :homeTeam="g[0].home_team" 
       :awayTeam="g[0].away_team" 
       :dateTime="g[0].date_time"  
@@ -22,29 +23,11 @@ export default {
   }, 
   data() {
     return {
-      games: [] //[
-        // {
-        //   id:25,
-        //   homeTeam: "Maccabi Tel-Aviv",
-        //   awayTeam: "Hapoel Beer-Sheva",
-        //   date: "27/5/21",
-        //   hour: "20:00",
-        //   stadium: "CAMP NOU"
-        // },
-        // {
-        //   id:39,
-        //   hostTeam: "Hapoel Tel-Aviv",
-        //   guestTeam: "Maccabi Haifa",
-        //   date: "29/5/21",
-        //   hour: "20:00",
-        //   stadium: "BAM"
-        // }
-      // ]
+      games: [] 
     };
   },
   methods: {
     async updateGames(){
-      // this.$root.store.hasCookie();
       this.$forceUpdate();
       if(this.$root.store.username){
         console.log("response");
@@ -69,4 +52,5 @@ export default {
 </script>
 
 <style>
+
 </style>

@@ -26,6 +26,6 @@ export default {
 
 <style>
   .match-report{
-    height: 100%;
+    font-size: 20px;
   }
 </style>

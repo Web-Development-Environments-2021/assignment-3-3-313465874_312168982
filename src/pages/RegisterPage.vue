@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="title">Register</h1>
-    <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
+    <b-form @submit.prevent="onRegister" @reset.prevent="onReset" class="form">
       <b-form-group
         id="input-group-username"
         label-cols-sm="3"
@@ -14,13 +14,13 @@
           type="text"
           :state="validateState('username')"
         ></b-form-input>
-        <b-form-invalid-feedback v-if="!$v.form.username.required">
+        <b-form-invalid-feedback id="alert" v-if="!$v.form.username.required">
           Username is required
         </b-form-invalid-feedback>
-        <b-form-invalid-feedback v-else-if="!$v.form.username.length">
+        <b-form-invalid-feedback id="alert" v-else-if="!$v.form.username.length">
           Username length should be between 3-8 characters long
         </b-form-invalid-feedback>
-        <b-form-invalid-feedback v-if="!$v.form.username.alpha">
+        <b-form-invalid-feedback id="alert" v-if="!$v.form.username.alpha">
           Username should contain only alphabet characters.
         </b-form-invalid-feedback>
       </b-form-group>
@@ -37,10 +37,10 @@
           type="text"
           :state="validateState('firstName')"
         ></b-form-input>
-        <b-form-invalid-feedback v-if="!$v.form.firstName.required">
+        <b-form-invalid-feedback id="alert" v-if="!$v.form.firstName.required">
           first name is required
         </b-form-invalid-feedback>
-        <b-form-invalid-feedback v-if="!$v.form.firstName.alpha">
+        <b-form-invalid-feedback id="alert" v-if="!$v.form.firstName.alpha">
           first name should contain only alphabet characters.
         </b-form-invalid-feedback>
       </b-form-group>
@@ -58,10 +58,10 @@
           :state="validateState('lastName')"
         >
         </b-form-input>
-        <b-form-invalid-feedback v-if="!$v.form.lastName.required">
+        <b-form-invalid-feedback id="alert" v-if="!$v.form.lastName.required">
           last name is required
         </b-form-invalid-feedback>
-        <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">
+        <b-form-invalid-feedback id="alert" v-if="!$v.form.lastName.alpha">
           last name should contain only alphabet characters.
         </b-form-invalid-feedback>
       </b-form-group>
@@ -95,10 +95,10 @@
           v-model="$v.form.password.$model"
           :state="validateState('password')"
         ></b-form-input>
-        <b-form-invalid-feedback v-if="!$v.form.password.required">
+        <b-form-invalid-feedback id="alert" v-if="!$v.form.password.required">
           Password is required
         </b-form-invalid-feedback>
-        <b-form-text v-else-if="$v.form.password.$error" text-variant="info">
+        <b-form-text id="alert" v-else-if="$v.form.password.$error" text-variant="info">
           Your password should be <strong>strong</strong>. <br />
           For that, your password should be also:
         </b-form-text>
@@ -121,10 +121,10 @@
           v-model="$v.form.confirmedPassword.$model"
           :state="validateState('confirmedPassword')"
         ></b-form-input>
-        <b-form-invalid-feedback v-if="!$v.form.confirmedPassword.required">
+        <b-form-invalid-feedback id="alert" v-if="!$v.form.confirmedPassword.required">
           Password confirmation is required
         </b-form-invalid-feedback>
-        <b-form-invalid-feedback
+        <b-form-invalid-feedback id="alert"
           v-else-if="!$v.form.confirmedPassword.sameAsPassword"
         >
           The confirmed password is not equal to the original password
@@ -144,7 +144,7 @@
           type="email"
           :state="validateState('email')"
         ></b-form-input>
-        <b-form-invalid-feedback v-if="!$v.form.email.required">
+        <b-form-invalid-feedback id="alert" v-if="!$v.form.email.required">
           email name is required
         </b-form-invalid-feedback>
       </b-form-group>
@@ -162,21 +162,21 @@
           type="url"
           :state="validateState('profilPic')"
         ></b-form-input>
-        <b-form-invalid-feedback v-if="!$v.form.profilPic.required">
+        <b-form-invalid-feedback id="alert" v-if="!$v.form.profilPic.required">
           profilPic is required
         </b-form-invalid-feedback>
       </b-form-group>
 
 
-      <b-button type="reset" variant="danger">Reset</b-button>
-      <b-button
+      <b-button id="but" type="reset" variant="danger">Reset</b-button>
+      <b-button id="but"
         type="submit"
         variant="primary"
         style="width:250px;"
         class="ml-5 w-75"
         >Register</b-button
       >
-      <div class="mt-2">
+      <div id="log">
         You have an account already?
         <router-link to="login"> Log in here</router-link>
       </div>
@@ -323,6 +323,30 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  max-width: 500px;
+  max-width: 650px;
+  padding: 15px;
+  font-size: 20px;
+}
+.title{
+  text-align: center;
+  margin: 20px;
+  font-size: 50px;
+  color: #2f941d;
+}
+
+#alert {
+  font-size: 15px;
+}
+
+.form{
+  font-weight: bold;
+}
+
+#but {
+  font-size: 25px;
+}
+#log {
+  font-size: 22px;
+  color: white;
 }
 </style>

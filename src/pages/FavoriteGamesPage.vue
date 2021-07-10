@@ -3,8 +3,6 @@
     <h1 class="title">Hi {{$root.store.username}}, Here Are Your Favorite Games:</h1>
     <br>
     <br>
-    <br>
-    <br>
     <FavoriteGames id="favorite" v-if="$root.store.username"></FavoriteGames>
   </div>
 </template>
@@ -26,5 +24,7 @@ export default {
 .title{
   text-align: center;
   margin-top: 50px;
+  font-size: 50px;
+  color: #2f941d;
 }
 </style>

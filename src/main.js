@@ -72,9 +72,12 @@ Vue.config.productionTip = false;
 
 const shared_data = {
   // username: localStorage.username,
+  recentQuery: "",
+  recentPlayers: [],
+  recentTeams: [],
   // username: "hilla",
-  player_id: 172104,
-  teamID: 53,
+  // player_id: 172104,
+  // teamID: 53,
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;
@@ -83,19 +86,10 @@ const shared_data = {
   logout() {
     console.log("logout");
     localStorage.removeItem("username");
-    this.username = undefined;
+    this.username = null;
   },
-  changeTeamID(newTeamID){
-    this.teamID = newTeamID
-  }
-  // hasCookie(){
-  //   // console.log(Vue.$cookies.get("session"))
-  //   if(this.username!=undefined){
-  //     this.logout();
-  //     this.$router.push("/").catch(() => {
-  //       this.$forceUpdate();
-  //     });
-  //   }
+  // changeTeamID(newTeamID){
+  //   this.teamID = newTeamID
   // }
 
 };

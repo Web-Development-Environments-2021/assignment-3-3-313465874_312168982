@@ -2,11 +2,11 @@
   <div>
     <router-link 
       :to="{
-      name: 'TeamPreview',
+      name: 'teamPage',
       params: { teamID: id},
       }">
     <div>
-      <img :src="logo" @click="moveTeamPage"  :to="{ name: 'teamPage' }"/>
+      <img :src="logo" @click="moveToTeamPage"  :to="{ name: 'teamPage' }"/>
     </div>
 
     </router-link>
@@ -40,8 +40,8 @@ export default {
 
   }, 
   methods:{
-    moveTeamPage(){
-      this.$root.store.changeTeamID(this.id);
+    moveToTeamPage(){
+      localStorage.teamID = this.id;
     }
     
   },
@@ -55,22 +55,25 @@ export default {
 .team-preview {
   display: inline-block;
   width: 250px;
-  height: 200px;
+  height: 80px;
   position: relative;
+  font-size: 19px;
   margin: 10px 10px;
   border-style: solid;
   border-radius: 10px;
-  border-width: 5px;
-  border-color:cadetblue;
+  border-width: 3px;
+  border-color:black;
+  font-weight: bold;
 }
 
 .team-preview .team-title {
   text-align: center;
   text-transform: uppercase;
-  color:  rgb(111, 197, 157);
+  color:  black;
 }
 
 .team-preview .team-content {
+  text-align: left;
   width: 100%;
   overflow: hidden;
 }

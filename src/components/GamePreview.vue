@@ -8,6 +8,7 @@
       <!-- <b>Game Id:</b> {{ id }}  -->
     </div>
     <ul class="game-content">
+      <li> referee name: {{ referee_name }}</li>
       <li> home team: {{ homeTeam }}</li>
       <li> away team: {{ awayTeam }}</li>
       <li> date time: {{ dateTime }}</li> 
@@ -32,6 +33,10 @@ export default {
   props: {
       id: {
         type: Number,
+        required: true
+      },
+      referee_name: {
+        type: String,
         required: true
       },
       homeTeam: {
@@ -68,25 +73,29 @@ export default {
 
 <style>
 .game-preview {
-  display: inline-block;
-  width: 100%;
-  height:100%;
-  position: relative;
+  /* display: inline-block; */
+  width: 450px;
+  margin-left: 60%;
+  height:80%;
+  /* position: relative; */
   margin: 10px 10px;
   border-style: solid;
   border-radius: 10px;
-  border-width: 5px;
-  border-color:cadetblue;
+  border-width: 3px;
+  border-color:rgb(146, 71, 165);
 }
 
-.game-preview .game-title {
+/* .game-preview .game-title {
   text-align: center;
   text-transform: uppercase;
   color:  rgb(111, 197, 157);
-}
+} */
 
 .game-preview .game-content {
   width: 100%;
   overflow: hidden;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /* margin: 20px; */
+  font-size: 20px;
 }
 </style>

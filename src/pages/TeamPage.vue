@@ -61,7 +61,7 @@ export default {
       console.log("response");
       try {
         response = await this.axios.get(
-          "http://localhost:3000/teams/teamFullDetails/86",
+          "http://localhost:3000/teams/teamFullDetails/" + localStorage.teamID,
         );
         console.log(response);
       } catch (error) {
@@ -81,4 +81,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>
