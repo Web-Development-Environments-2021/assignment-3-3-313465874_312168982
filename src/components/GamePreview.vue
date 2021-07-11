@@ -15,6 +15,7 @@
       <li> stadium: {{ stadium }}</li>
       <li v-if="result"> result: {{result}} </li>
     </ul>
+    <button v-if="$root.store.username && result == null" @click="addToFav">Add To Favorite</button>
   </div>
 </template>
 
@@ -65,6 +66,29 @@ export default {
       }
 
   }, 
+  methods: {
+    async addToFav(){
+      try {
+        const response = await this.axios.post(
+          "http://localhost:3000/users/addFavoriteGame",
+          {
+            username: this.$root.store.username,
+            id: this.id,
+          }
+        );
+        console.log(response);
+        if(response.status === 201){
+          this.$root.toast("AddFav", "The game successfully saved as favorite", "success");
+        }
+        
+        } catch (err) {
+        console.log(err.response);
+        this.$root.toast("AddFav", "You already like this game", "failed");
+        // this.form.submitError = err.response.data.message;
+      }
+
+    }
+  },
   mounted(){
     console.log("game preview mounted")
   } 

@@ -32,47 +32,19 @@
           
         </b-card-text>
       </div>
-      <!-- <div class="top3gamesclass" v-if="this.$root.store.username">
-        <b-card-text id="top3games">The next 3 favorite games: </b-card-text>
-        <h3 v-for="i in 3" :key="i">
-          <h3 v-for="g in favGames" :key="g.id">
-            <FavoriteGames
-              :id="g[i].game_id" 
-              :referee_name="g[i].referee_name"
-              :homeTeam="g[i].home_team" 
-              :awayTeam="g[i].away_team" 
-              :dateTime="g[i].date_time"  
-              :stadium="g[i].stadium" 
-              :key="g.game_id"></FavoriteGames>
-        </h3></h3>
-      </div> -->
-      <!-- <div id="forGuest"></div> -->
-      <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
     </b-card>
   </div>
 </template>
 
 <script>
-// import GamePreview from "../components/GamePreview.vue";
-// import FavoriteGames from "../components/FavoriteGames";
 export default {
   name: "LeagueInfo",
-  components: {
-    // FavoriteGames
-    // GamePreview
-  }, 
  data() {
     return {
       leagueName: "", 
       season: "", 
       stage: "",
-      nextGame: "",
-      // top3games: []
-    };
-  },
-  data() {
-    return {
-      favGames: [] 
+      nextGame: ""
     };
   },
   methods: {
@@ -93,22 +65,22 @@ export default {
         console.log(error);
       }
     },
-    async getFavoriteGames(){
-      this.$forceUpdate();
-      if(this.$root.store.username){
-        console.log("response");
-        try {
-          const response = await this.axios.get(
-          "http://localhost:3000/users/getFavoriteGames",
-        );
-        this.favGames = response.data;
-        console.log(response);
-        } catch (error) {
-        console.log("error in update games")
-        console.log(error);
-        }
-      }
-    }
+    // async getFavoriteGames(){
+    //   this.$forceUpdate();
+    //   if(this.$root.store.username){
+    //     console.log("response");
+    //     try {
+    //       const response = await this.axios.get(
+    //       "http://localhost:3000/users/getFavoriteGames",
+    //     );
+    //     this.favGames = response.data;
+    //     console.log(response);
+    //     } catch (error) {
+    //     console.log("error in update games")
+    //     console.log(error);
+    //     }
+    //   }
+    // }
 
   }, 
   mounted(){

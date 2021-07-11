@@ -92,9 +92,11 @@ export default {
         this.sortTeams();
 
         //save results
-        this.$root.store.recentQuery = this.searchQuery;
-        this.$root.store.recentPlayers = this.playersData;
-        this.$root.store.recentTeams = this.teamData;
+        if(this.$root.store.username != null){
+          this.$root.store.recentQuery = this.searchQuery;
+          this.$root.store.recentPlayers = this.playersData;
+          this.$root.store.recentTeams = this.teamData;
+        }
         
       } catch (error) {
         console.log("error in update games")

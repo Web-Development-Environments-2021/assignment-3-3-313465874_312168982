@@ -1,39 +1,51 @@
 <template>
-  <div>
+  <div class="teamPage">
     <h1 class="title">Team Page</h1>
-    <PlayerPreview
-      v-for="p in playersData" 
-      :ProfilePic="p.image" 
-      :fullName="p.name" 
-      :positionNumber="p.position"
-      :teamName="p.team_name"
-      :id=1
-      :key="p.name"></PlayerPreview>
-
-    <GamePreview
-      v-for="g in future_games"
-      :id="g.game_id" 
-      :homeTeam="g.home_team" 
-      :awayTeam="g.away_team" 
-      :dateTime="g.date_time"  
-      :stadium="g.stadium"
-      :result="g.result" 
-      :key="g.id"></GamePreview>
-
+    <div class="content">
+      <div class="players"><b><u>Players In Team:</u></b><br>
+      <PlayerPreview
+        v-for="p in players" 
+        :ProfilePic="p.image" 
+        :fullName="p.name" 
+        :positionNumber="p.position"
+        :teamName="p.team_name"
+        :id="p.player_id"
+        :key="p.name"></PlayerPreview>
+      </div>
+      <div class="games"><b><u>Games In Team:</u></b><br><br>Future Games:
+      <div class="futureGames" v-if="future_games.length>0">
       <GamePreview
-      v-for="g in past_games"
-      :id="g.game_id" 
-      :homeTeam="g.home_team" 
-      :awayTeam="g.away_team" 
-      :dateTime="g.date_time"  
-      :stadium="g.stadium"
-      :result="g.result" 
-      :key="g.id"></GamePreview>
+        v-for="g in future_games"
+        :id="g.game_id"
+        :referee_name="g.referee_name"  
+        :homeTeam="g.home_team" 
+        :awayTeam="g.away_team" 
+        :dateTime="g.date_time"  
+        :stadium="g.stadium"
+        :key="g.id"></GamePreview>
+      </div>
 
-    <!-- <ul class="teamClass">
-      <li> players: {{ players }}</li>
-      <li> games: {{ games }}</li>
-    </ul> -->
+      <div class="pastGames" v-if= "past_games!= 'No past games available'">Past Games:
+
+        <GamePreview
+        v-for="g in past_games"
+        :id="g.game_id" 
+        :referee_name="g.referee_name" 
+        :homeTeam="g.home_team" 
+        :awayTeam="g.away_team" 
+        :dateTime="g.date_time"  
+        :stadium="g.stadium"
+        :result="g.result" 
+        :mr="match_reports_dict[g.game_id]"
+        :key="g.id"></GamePreview>
+      </div>
+    </div>
+    </div>
+
+      <!-- <ul class="teamClass">
+        <li> players: {{ players }}</li>
+        <li> games: {{ games }}</li>
+      </ul> -->
   </div>
 </template>
 
@@ -82,5 +94,32 @@ export default {
 </script>
 
 <style>
-
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.teamPage {
+  display: flex;
+  flex-direction: column;
+}
+.games {
+  display: flex;
+  flex-direction: column;
+  /* margin-right: 100px; */
+  /* margin-top: 50px; */
+  /* padding: 20px; */
+  /* height: 1000px; */
+}
+.players {
+  margin-left: 100px;
+  margin-top: 20px;
+  font-size: 40px;
+}
+.futureGames {
+  margin-top: 30px;
+}
+.pastGames {
+  margin-top: 30px;
+}
 </style>

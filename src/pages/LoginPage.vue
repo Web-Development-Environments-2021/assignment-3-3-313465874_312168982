@@ -100,13 +100,14 @@ export default {
             password: this.form.password
           }
         );
-        // console.log(response);
+        console.log(response);
         // this.$root.loggedIn = true;
         console.log(this.$root.store.login);
         this.$root.store.login(this.form.username);
         // if(this.$route.path != "/"){
           this.$router.push("/")
         .catch(() => {
+        console.log("refresh")
         this.$forceUpdate();
       })
       // ;}

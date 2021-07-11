@@ -13,9 +13,6 @@
             
     
     <div class="games">
-      <!-- <div id="past"> -->
-        <!-- <u style="color: rgb(146, 71, 165)">Past Games:</u> -->
-        <!-- <br/> -->
         <h2 v-for="g in allGames" :key="g.id">
         <GamePreview
           :id="g.game_id"
@@ -31,201 +28,299 @@
     </div>
     <!-- close div sorting -->
     </div>
-      <!-- <div id="future"> -->
-        <!-- <u style="color: rgb(146, 71, 165)">Future Games:</u> -->
-        <!-- <br/> -->
-        <!-- <h3 v-for="g in allGames" :key="g.id">
-        <GamePreview
-          :id="g.game_id" 
-          :referee_name="g.referee_name"
-          :homeTeam="g.home_team" 
-          :awayTeam="g.away_team" 
-          :dateTime="g.date_time"  
-          :stadium="g.stadium" 
-          :key="g.game_id"></GamePreview>
-        </h3> -->
-      <!-- </div> -->
-    <!-- </div> -->
-
 
     <!-- open div add game -->
-    <!-- <div id="actions">Add New Game 
-        <b-form @submit.prevent="Adding" @reset.prevent="onReset" class="form"> -->
+    <div class="actions">
+      <div id="newGame"> <b><u>Add New Game</u></b><br><br>
+        <b-form @submit.prevent="AddingGame" @reset.prevent="onReset" class="form">
                 <!-- referee_name -->
-            <!-- <b-form-group id="input-referee-name" label-cols-sm="3" label="Referee Name:" label-for="referee">
-            <b-form-input id="referee" v-model="$v.form.referee_name.$model"
-                type="text" :state="validateState('referee_name')"></b-form-input>
-            <b-form-invalid-feedback id="alert" v-if="!$v.form.referee_name.required">
-            referee name is required </b-form-invalid-feedback>
-            <b-form-invalid-feedback id="alert" v-if="!$v.form.referee_name.alpha">
-            referee name should contain only alphabet characters.</b-form-invalid-feedback>
-            </b-form-group> -->
-                <!-- date_time -->
-            <!-- <b-form-group id="input-date_time" label-cols-sm="3" label="Date Time:" label-for="date_time">
-            <b-form-input id="date_time" v-model="$v.form.date_time.$model"
-                type="text||datetime-local" :state="validateState('date_time')"></b-form-input>
-            <b-form-invalid-feedback id="alert" v-if="!$v.form.date_time.required">
-            date time is required </b-form-invalid-feedback></b-form-group> -->
-
-
-            <!-- <b-form-group id="input-date" label-cols-sm="3" label="Date:" label-for="date">
-            <b-form-datepicker v-model="date" :min="min" :max="max" locale="en"></b-form-datepicker></b-form-group> -->
-                <!-- time -->
-            <!-- <b-form-group id="input-time" label-cols-sm="3" label="Time:" label-for="time">
-            <b-form-timepicker v-model="time" locale="en"></b-form-timepicker></b-form-group> -->
-
-                <!-- home_team -->
-            <!-- <b-form-group id="input-home_team" label-cols-sm="3" label="Home Team:" label-for="home_team">
-            <b-form-input id="home_team" v-model="$v.form.home_team.$model"
-                type="text" :state="validateState('home_team')"></b-form-input>
-            <b-form-invalid-feedback id="alert" v-if="!$v.form.home_team.required">
-            home team is required </b-form-invalid-feedback>
-            <b-form-invalid-feedback id="alert" v-if="!$v.form.home_team.alpha">
-            home team should contain only alphabet characters.</b-form-invalid-feedback>
-            </b-form-group> -->
-                <!-- away_team -->
-            <!-- <b-form-group id="input-away_team" label-cols-sm="3" label="Away Team:" label-for="away_team">
-            <b-form-input id="away_team" v-model="$v.form.away_team.$model"
-                type="text" :state="validateState('away_team')"></b-form-input>
-            <b-form-invalid-feedback id="alert" v-if="!$v.form.away_team.required">
-            away team is required </b-form-invalid-feedback>
-            <b-form-invalid-feedback id="alert" v-if="!$v.form.away_team.alpha">
-            away team should contain only alphabet characters.</b-form-invalid-feedback>
-            </b-form-group> -->
-                <!-- stadium -->
-            <!-- <b-form-group id="input-stadium" label-cols-sm="3" label="Stadium:" label-for="stadium">
-            <b-form-input id="stadium" v-model="$v.form.stadium.$model"
+            <b-form-group id="input-referee-name" label-cols-sm="3" label="Referee Name:" label-for="referee">
+            <b-form-input id="referee" v-model="$v.formNewGame.referee_name.$model"
                 type="text" :state="validateState('stadium')"></b-form-input>
-            <b-form-invalid-feedback id="alert" v-if="!$v.form.stadium.required">
+            <b-form-invalid-feedback id="alert" v-if="!$v.formNewGame.referee_name.required">
+            referee name is required </b-form-invalid-feedback>
+            <b-form-invalid-feedback id="alert" v-if="!$v.formNewGame.referee_name.alpha">
+            referee name should contain only alphabet characters.</b-form-invalid-feedback>
+            </b-form-group>
+                <!-- date_time -->
+            <b-form-group id="input-date_time" label-cols-sm="3" label="Date Time:" label-for="date_time">
+            <b-form-input id="date_time" v-model="$v.formNewGame.date_time.$model"
+                type="text" :state="validateState('date_time')"></b-form-input>
+            <b-form-invalid-feedback id="alert" v-if="!$v.formNewGame.date_time.required">
+            date time is required </b-form-invalid-feedback></b-form-group>
+                <!-- home_team -->
+            <b-form-group id="input-home_team" label-cols-sm="3" label="Home Team:" label-for="home_team">
+            <b-form-input id="home_team" v-model="$v.formNewGame.home_team.$model"
+                type="text" :state="validateState('home_team')"></b-form-input>
+            <b-form-invalid-feedback id="alert" v-if="!$v.formNewGame.home_team.required">
+            home team is required </b-form-invalid-feedback>
+            <b-form-invalid-feedback id="alert" v-if="!$v.formNewGame.home_team.alpha">
+            home team should contain only alphabet characters.</b-form-invalid-feedback>
+            </b-form-group>
+                <!-- away_team -->
+            <b-form-group id="input-away_team" label-cols-sm="3" label="Away Team:" label-for="away_team">
+            <b-form-input id="away_team" v-model="$v.formNewGame.away_team.$model"
+                type="text" :state="validateState('away_team')"></b-form-input>
+            <b-form-invalid-feedback id="alert" v-if="!$v.formNewGame.away_team.required">
+            away team is required </b-form-invalid-feedback>
+            <b-form-invalid-feedback id="alert" v-if="!$v.formNewGame.away_team.alpha">
+            away team should contain only alphabet characters.</b-form-invalid-feedback>
+            </b-form-group>
+                <!-- stadium -->
+            <b-form-group id="input-stadium" label-cols-sm="3" label="Stadium:" label-for="stadium">
+            <b-form-input id="stadium" v-model="$v.formNewGame.stadium.$model"
+                type="text" :state="validateState('stadium')"></b-form-input>
+            <b-form-invalid-feedback id="alert" v-if="!$v.formNewGame.stadium.required">
             stadium is required </b-form-invalid-feedback>
-            <b-form-invalid-feedback id="alert" v-if="!$v.form.stadium.alpha">
+            <b-form-invalid-feedback id="alert" v-if="!$v.formNewGame.stadium.alpha">
             stadium should contain only alphabet characters.</b-form-invalid-feedback>
             </b-form-group>
-            <b-button id="but" type="reset" variant="danger">Reset</b-button>
-            <b-button id="but" type="submit" variant="primary" style="width:250px;">Register</b-button>
+            <b-button id="but1" type="reset" variant="danger">Reset</b-button>
+            <b-button id="but2" type="submit" variant="primary" style="width:300px;">Add Game To DB</b-button>
         </b-form>
-        <b-alert class="mt-2" v-if="form.submitError" variant="warning" dismissible show>
-        Adding New Game failed: {{ form.submitError }}
-        </b-alert> -->
+        <b-alert class="mt-2" v-if="formNewGame.submitError" variant="warning" dismissible show>
+        Adding New Game failed: {{ formNewGame.submitError }}
+        </b-alert>
 
-    <!-- div close form -->
-    <!-- </div> -->
+      <!-- div close form -->
+      </div><br><br><br>
+
+      <div id="bonus"><b><u>Add Result To Game</u></b><br><br>
+        <b-form @submit.prevent="AddingResult" @reset.prevent="onReset" class="form">
+              <!-- game_id -->
+            <b-form-group id="input-game_id" label-cols-sm="3" label="Game Id:" label-for="game_id">
+            <b-form-input id="game_id" v-model="$v.formAddResult.game_id.$model"
+                type="number" ></b-form-input>
+            <b-form-invalid-feedback id="alert" v-if="!$v.formAddResult.game_id.required">
+            game_id is required </b-form-invalid-feedback>
+            </b-form-group>
+                <!-- result -->
+            <b-form-group id="input-result" label-cols-sm="3" label="Result:" label-for="result">
+            <b-form-input id="result" v-model="$v.formAddResult.result.$model"
+                type="text"></b-form-input>
+            <b-form-invalid-feedback id="alert" v-if="!$v.formAddResult.result.required">
+            result is required </b-form-invalid-feedback>
+            </b-form-group>
+            <b-button id="but3" type="reset" variant="danger">Reset</b-button>
+            <b-button id="but4" type="submit" variant="primary" style="width:300px;">Add Result To Game</b-button>
+        </b-form>
+        <b-alert class="mt-2" v-if="formAddResult.submitError" variant="warning" dismissible show>
+        Adding Result To Game failed: {{ formAddResult.submitError }}
+        </b-alert>
+      </div><br><br><br>
+
+      <div id="addMR"><b><u>Add Match Report To Game:</u></b><br><br>
+      <b-form @submit.prevent="AddingMatchReport" @reset.prevent="onReset" class="form">
+        <!-- game_id -->
+        <b-form-group id="input-game_id" label-cols-sm="3" label="Game Id:" label-for="game_id">
+          <b-form-input id="game_id" v-model="$v.formAddMR.game_id.$model"
+          type="number" ></b-form-input>
+          <b-form-invalid-feedback id="alert" v-if="!$v.formAddMR.game_id.required">
+          game_id is required </b-form-invalid-feedback>
+          </b-form-group>
+          <!-- minuteEvent -->
+          <b-form-group id="input-minuteEvent" label-cols-sm="3" label="Minute Event:" label-for="minuteEvent">
+            <b-form-input id="minuteEvent" v-model="$v.formAddMR.minuteEvent.$model"
+                type="number" ></b-form-input>
+            <b-form-invalid-feedback id="alert" v-if="!$v.formAddMR.minuteEvent.required">
+            minuteEvent is required </b-form-invalid-feedback>
+            </b-form-group>
+            <!-- event -->
+          <b-form-group id="input-event" label-cols-sm="3" label="Event:" label-for="event">
+            <b-form-input id="event" v-model="$v.formAddMR.event.$model"
+                type="number" ></b-form-input>
+            <b-form-invalid-feedback id="alert" v-if="!$v.formAddMR.event.required">
+            event is required </b-form-invalid-feedback>
+            </b-form-group>
+            <b-button id="but5" type="reset" variant="danger">Reset</b-button>
+            <b-button id="but6" type="submit" variant="primary" style="width:300px;">Add Match Report To Game</b-button>
+        </b-form>
+        <b-alert class="mt-2" v-if="formAddMR.submitError" variant="warning" dismissible show>
+        Adding Match Report To Game failed: {{ formAddMR.submitError }}
+        </b-alert><br><br>
+      </div>
+    </div>
     <!-- close div if page-->
     </div>
-    <div id="alert" v-else-if="!$root.store.username || $root.store.username!='manager'">You Have No Permissions To This Page</div>
+    <div id="notAllowed" v-else-if="!$root.store.username || $root.store.username!='manager'">You Have No Permissions To This Page</div>
   <!-- close div container -->
   </div>
 </template>
 
 <script>
 import GamePreview from "../components/GamePreview.vue";
+import {
+  required,
+  alpha
+} from "vuelidate/lib/validators";
 export default {
   name: "CurrentGames",
   components: {
     GamePreview
   }, 
   data() {
-    // //date
-    // const now = new Date()
-    // const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-    // // 15th two months prior
-    // const minDate = new Date(today)
-    // minDate.setMonth(minDate.getMonth() - 2)
-    // minDate.setDate(15)
-    // // 15th in two months
-    // const maxDate = new Date(today)
-    // maxDate.setMonth(maxDate.getMonth() + 2)
-    // maxDate.setDate(15)
     return {
       future_games: null,
       past_games: null,
       match_reports_dict: null,
       allGames: null,
       sortBy: "No Sort",
-    //   form: {
-    //     referee_name: "",
-    //     date_time: "",
-    //     home_team: "",
-    //     away_team: "",
-    //     stadium: "",
-
-        // date: '',
-        // time: '',
-        // min: minDate,
-        // max: maxDate
-    //   },
-    //   errors: [],
-    //   validated: false
-    };
+      formNewGame: {
+        referee_name: "",
+        date_time: "",
+        home_team: "",
+        away_team: "",
+        stadium: "",
+      },
+      formAddResult: {
+        game_id: "",
+        result: "",
+      },
+      formAddMR: {
+        game_id: "",
+        minuteEvent: "",
+        event: "",
+      },
+      errors: [],
+      validated: false
+    }
   },
-//   validations: {
-//     form: {
-//       referee_name: {
-//         required,
-//         alpha
-//       },
-//       date_time: {
-//           required
-//       },
-    //   date: {
-    //       required
-    //   },
-    //   time: {
-    //       required
-    //   },
-    //   home_team: {
-    //     required,
-    //     alpha
-    //   },
-    //   away_team: {
-    //     required,
-    //     alpha
-    //   },
-    //   stadium: {
-    //     required,
-    //     alpha
-    //   },
-    // }
-//   },
+  validations: {
+    formNewGame: {
+      referee_name: {
+        required,
+        alpha
+      },
+      date_time: {
+          required
+      },
+      home_team: {
+        required,
+        alpha
+      },
+      away_team: {
+        required,
+        alpha
+      },
+      stadium: {
+        required,
+        alpha
+      },
+    },
+    formAddResult: {
+      game_id: {
+        require
+      },
+      result: {
+        require
+      },
+    },
+    formAddMR: {
+      game_id: {
+        require
+      },
+      minuteEvent: {
+        require
+      },
+      event: {
+        required
+      },
+    }
+      
+  },
   methods: {
-    // validateState(param) {
-    //   const { $dirty, $error } = this.$v.form[param];
-    //   return $dirty ? !$error : null;
-    // },
-    // async addNewGame() {
-    //   try {
-    //     const response = await this.axios.post(
-    //       "http://localhost:3000/Register",
-    //       {
-    //         referee_name: this.form.referee_name,
-    //         home_team: this.form.home_team,
-    //         away_team: this.form.away_team,
-    //         date_time: this.form.date_time,
-    //         stadium: this.form.stadium,
-    //       }
-    //     );
-    //     } catch (err) {
-    //     console.log(err.response);
-    //     this.form.submitError = err.response.data.message;
-    //   }
-    // },
-    // Adding() {
-    //   console.log("adding method called");
-    //   this.$v.form.$touch();
-    //   if (this.$v.form.$anyError) {
-    //     return;
-    //   }
-    //   console.log("register method go");
-    //   this.addNewGame();
-    // },
-    // onReset() {
-    //   this.form = {
-    //     referee_name: ""
-    //   };
-    //   this.$nextTick(() => {
-    //     this.$v.$reset();
-    //   });
-    // },
+    validateState(param) {
+      const { $dirty, $error } = this.$v.formNewGame[param];
+      return $dirty ? !$error : null;
+    },
+    async addNewGame() {
+      try {
+        const response = await this.axios.post(
+          "http://localhost:3000/users/addGame",
+          {
+            referee_name: this.formNewGame.referee_name,
+            home_team: this.formNewGame.home_team,
+            away_team: this.formNewGame.away_team,
+            date_time: this.formNewGame.date_time,
+            stadium: this.formNewGame.stadium,
+          }
+        );
+        console.log(response);
+        if(response.status === 201){
+          this.$root.toast("AddGame", "The game successfully added", "success");
+        }
+        this.$router.push("/currentGames");
+        } catch (err) {
+        console.log(err.response);
+        this.formNewGame.submitError = err.response.data.message;
+      }
+    },
+    async addResultToGame() {
+      try {
+        const response = await this.axios.post(
+          "http://localhost:3000/addResultGame",
+          {
+            game_id: this.formAddResult.game_id,
+            result: this.formAddResult.result,
+          }
+        );
+        console.log(response);
+        if(response.status === 201){
+          this.$root.toast("AddResultToGame", "The result successfully added to the game", "success");
+        }
+        this.$router.push("/currentGames");
+        } catch (err) {
+        console.log(err.response);
+        this.formAddResult.submitError = err.response.data.message;
+      }
+    },
+    async addMRToGame() {
+      try {
+        const response = await this.axios.post(
+          "http://localhost:3000/addMatchReportToGame",
+          {
+            game_id: this.formAddMR.game_id,
+            minuteEvent: this.formAddMR.minuteEvent,
+            event: this.formAddMR.event,
+          }
+        );
+        console.log(response);
+        if(response.status === 201){
+          this.$root.toast("AddMatchReportToGame", "The match report successfully added to the game", "success");
+        }
+        this.$router.push("/currentGames");
+        } catch (err) {
+        console.log(err.response);
+        this.formAddMR.submitError = err.response.data.message;
+      }
+    },
+    AddingGame() {
+      console.log("adding method called");
+      console.log("add game method go");
+      this.addNewGame();
+    },
+    AddingResult() {
+      console.log("adding method called");
+      console.log("add result method go");
+      this.addResultToGame();
+    },
+    AddingMatchReport() {
+      console.log("adding method called");
+      console.log("add match report method go");
+      this.addMRToGame();
+    },
+    onReset() {
+      this.form = {
+        referee_name: "",
+        date_time: "",
+        home_team: "",
+        away_team: "",
+        stadium: ""
+      };
+      this.$nextTick(() => {
+        this.$v.$reset();
+      });
+    },
 
     async getMatchReport(){
       try {
@@ -261,11 +356,6 @@ export default {
     this.sortByEl();
     this.allGames.push(...this.allGames);
   },
-//   computed: {
-//     date_time: function () {
-//       return this.date + ' ' + this.time
-//     }
-//   }
 };
 
 
@@ -283,9 +373,18 @@ export default {
 .games {
   display: flex;
   flex-direction: column;
-//   justify-content: space-between;
+  justify-content: space-between;
   font-size: 45px;
   align-self: center;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 100px;
+  width: 600px;
+  font-size: 30px;
+  font-weight: bold;
 }
 .title {
   text-align: center;
@@ -294,14 +393,49 @@ export default {
   color: #2f941d;
 }
 #sort-input {
-  width: 1100px; 
+  // width: 1100px; 
   margin-top: 30px;
   margin-left: 50px;
+}
+#notAllowed {
+    text-align: center;
+    color: red;
+    font-size: 55px;
 }
 #alert {
     text-align: center;
     color: red;
-    font-size: 55px;
+    font-size: 15px;
     font-weight: bold;
 }
+// #newGame {
+  // width: 500px;
+  // font-size: 20px;
+  // font-weight: bold;
+//   margin-top: 50px;
+//   margin-left: 150px;
+// }
+// #bonus {
+//   margin-top: 50px;
+//   margin-left: 150px;
+// }
+#but1 {
+  font-size: 25px;
+}
+#but2 {
+  font-size: 25px;
+}
+#but3 {
+  font-size: 25px;
+}
+#but4 {
+  font-size: 25px;
+}
+#but5 {
+  font-size: 25px;
+}
+#but6 {
+  font-size: 25px;
+}
+
 </style>
